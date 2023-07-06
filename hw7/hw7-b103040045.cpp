@@ -1,6 +1,6 @@
-//Author¡G·¨¶M´@ B103040045
-//Date¡GOct. 27, 2022
-//Purpose¡G½m²ß¦UºØ±Æ§Çºtºâªk¡A¨Ã¨Ì¾Ú¤£¦P¼Æ¶qªº´ú¸ê¬İ¬İºtºâªkªº®Ä²v
+//Authorï¼š B103040045
+//Dateï¼šOct. 27, 2022
+//Purposeï¼šç·´ç¿’å„ç¨®æ’åºæ¼”ç®—æ³•ï¼Œä¸¦ä¾æ“šä¸åŒæ•¸é‡çš„æ¸¬è³‡çœ‹çœ‹æ¼”ç®—æ³•çš„æ•ˆç‡
 #include <iostream>
 #include <climits>
 #include <cstdlib>
@@ -9,60 +9,60 @@
 #include <ctime>
 #include <iomanip>
 using namespace std;
-void insertion_sort(int *arr,int size) //parameter: ­n±Æ§Çªº°}¦C¥H¤Î°}¦C¤j¤p
+void insertion_sort(int *arr,int size) //parameter: è¦æ’åºçš„é™£åˆ—ä»¥åŠé™£åˆ—å¤§å°
 {
-    int temp,j,i; //temp¼È¦s¸ê®ÆªºÅÜ¼Æ¡Bi,j¶]°j°é
-    for(i=1;i<size;i++) //±q1¶}©l
+    int temp,j,i; //tempæš«å­˜è³‡æ–™çš„è®Šæ•¸ã€i,jè·‘è¿´åœˆ
+    for(i=1;i<size;i++) //å¾1é–‹å§‹
     {
-        temp=arr[i]; //¬ö¿ı¶}©lªº¤¸¯À
-        for(j=i-1;j>=0;j--) //²Än­Ó·|¤ñn-1¦¸
+        temp=arr[i]; //ç´€éŒ„é–‹å§‹çš„å…ƒç´ 
+        for(j=i-1;j>=0;j--) //ç¬¬nå€‹æœƒæ¯”n-1æ¬¡
         {
-            if(arr[j]>temp) //«e­±¦³¤ñ¸û¤jªº´N²¾¨ì«á­±
+            if(arr[j]>temp) //å‰é¢æœ‰æ¯”è¼ƒå¤§çš„å°±ç§»åˆ°å¾Œé¢
             arr[j+1]=arr[j];
             else
             break;
         }
-        arr[j+1]=temp; //±N¸Ó­È®t¶i¥h
+        arr[j+1]=temp; //å°‡è©²å€¼å·®é€²å»
     }
 }
 
-void Merge(int *Array, int front, int mid, int end) //°Ñ¼Æ:­n¦XÅéªº°}¦C¡B¶}ÀY¡B¤¤¶¡¡Bµ²§À
+void Merge(int *Array, int front, int mid, int end) //åƒæ•¸:è¦åˆé«”çš„é™£åˆ—ã€é–‹é ­ã€ä¸­é–“ã€çµå°¾
 {
-    int n1=mid-front+1; //front~midªºªø«×
-    int n2=end-(mid+1)+1; //mid+1~endªºªø«×
-    //°ÊºA«Å§i
+    int n1=mid-front+1; //front~midçš„é•·åº¦
+    int n2=end-(mid+1)+1; //mid+1~endçš„é•·åº¦
+    //å‹•æ…‹å®£å‘Š
     int *leftsub= new int [n1]; 
     int *rightsub =new int [n2];
-    // §âarray[front]~array[mid]©ñ¶i leftsub[]
-    // §âarray[mid+1]~array[end]©ñ¶i rightsub[]
+    // æŠŠarray[front]~array[mid]æ”¾é€² leftsub[]
+    // æŠŠarray[mid+1]~array[end]æ”¾é€² rightsub[]
     for(int k=0;k<n1;k++)
     leftsub[k]=Array[front+k];
     for(int j=0;j<n2;j++)
     rightsub[j]=Array[j+mid+1];
 
-    int idxLeft = 0, idxRight = 0, k=front; //¥ª¤l°}¦C¸ò¥k¤l°}¦Cªº°_©l¦ì¸m ¸ò ¶}ÀY
+    int idxLeft = 0, idxRight = 0, k=front; //å·¦å­é™£åˆ—è·Ÿå³å­é™£åˆ—çš„èµ·å§‹ä½ç½® è·Ÿ é–‹é ­
     // Merge two temp arrays back into arr[head..tail]
-    while(idxLeft < n1 && idxRight < n2) //¤£¯à¶W¹L°}¦CªºÃä¬É
+    while(idxLeft < n1 && idxRight < n2) //ä¸èƒ½è¶…éé™£åˆ—çš„é‚Šç•Œ
     {
-        //±N¤ñ¸û¤pªº©ñ¶i¥h
+        //å°‡æ¯”è¼ƒå°çš„æ”¾é€²å»
         if(leftsub[idxLeft] <= rightsub[idxRight])
         {
         Array[k] = leftsub[idxLeft];
-        idxLeft++; //°Ê«ü°w
+        idxLeft++; //å‹•æŒ‡é‡
         }
         else
         {
         Array[k] = rightsub[idxRight];
-        idxRight++; //°Ê«ü°w
+        idxRight++; //å‹•æŒ‡é‡
         }
-        k++; //¦ì¸m§ïÅÜ
+        k++; //ä½ç½®æ”¹è®Š
     }
 
     //Copy the remaing elements into arr[], if leftsub[] haven't finished scanning
     while(idxLeft < n1)
     {
     Array[k] = leftsub[idxLeft];
-    //°Ê«ü°w
+    //å‹•æŒ‡é‡
     idxLeft++;
     k++; 
     }
@@ -70,74 +70,74 @@ void Merge(int *Array, int front, int mid, int end) //°Ñ¼Æ:­n¦XÅéªº°}¦C¡B¶}ÀY¡B¤
     while(idxRight < n2)
     {
     Array[k] = rightsub[idxRight];
-    //°Ê«ü°w
+    //å‹•æŒ‡é‡
     idxRight++;
     k++; 
     }
-    //°ÊºA«Å§i­n§R°£
+    //å‹•æ…‹å®£å‘Šè¦åˆªé™¤
     delete [] leftsub; 
     delete [] rightsub;
 }
-void Merge_Sort(int *array, int front, int end) //°Ñ¼Æ:­n±Æ§Çªº°}¦C¡B¶}ÀY¸òµ²§ô¦ì¸m
+void Merge_Sort(int *array, int front, int end) //åƒæ•¸:è¦æ’åºçš„é™£åˆ—ã€é–‹é ­è·ŸçµæŸä½ç½®
 {
-    // front»Pend¬°¯x°}½d³ò
-    //PS:§Q¥Îrecursion¹ê§@
-    if (front < end) {                   // ªí¥Ü¥Ø«eªº¯x°}½d³ò¬O¦³®Äªº
-        int mid = (front+end)/2;         // mid¬O¨âªÌªº¤¤¶¡¦ì¸m
-        Merge_Sort(array, front, mid);    // divide¯x°}ªº«e¥b¬qsubarray
-        Merge_Sort(array, mid+1, end);    // divide¯x°}ªº«á¥b¬qsubarray
-        Merge(array, front, mid, end);   // ±N¨â­Ósubarray°µ¤ñ¸û, ¨Ã¦X¨Ö¥X±Æ§Ç«áªº¯x°}(conquer)
+    // frontèˆ‡endç‚ºçŸ©é™£ç¯„åœ
+    //PS:åˆ©ç”¨recursionå¯¦ä½œ
+    if (front < end) {                   // è¡¨ç¤ºç›®å‰çš„çŸ©é™£ç¯„åœæ˜¯æœ‰æ•ˆçš„
+        int mid = (front+end)/2;         // midæ˜¯å…©è€…çš„ä¸­é–“ä½ç½®
+        Merge_Sort(array, front, mid);    // divideçŸ©é™£çš„å‰åŠæ®µsubarray
+        Merge_Sort(array, mid+1, end);    // divideçŸ©é™£çš„å¾ŒåŠæ®µsubarray
+        Merge(array, front, mid, end);   // å°‡å…©å€‹subarrayåšæ¯”è¼ƒ, ä¸¦åˆä½µå‡ºæ’åºå¾Œçš„çŸ©é™£(conquer)
     }
 }
 
-void swap(int *a, int *b) //°Ñ¼Æ:­n¥æ´«ªº¨â­Ó­È¡A»İ¥Îcall by reference(or pointer)¡A¤£µM¨S¦³¥æ´«ªº®ÄªG
+void swap(int *a, int *b) //åƒæ•¸:è¦äº¤æ›çš„å…©å€‹å€¼ï¼Œéœ€ç”¨call by reference(or pointer)ï¼Œä¸ç„¶æ²’æœ‰äº¤æ›çš„æ•ˆæœ
 {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
-int Partition(int *arr, int front, int end) //°Ñ¼Æ:¤@­Ó°}¦C¡B¶}ÀY¸òµ²§ô¦ì¸m
+int Partition(int *arr, int front, int end) //åƒæ•¸:ä¸€å€‹é™£åˆ—ã€é–‹é ­è·ŸçµæŸä½ç½®
 {
-    int pivot = arr[end]; //±N³Ì¥kÃä³]¬°°ò·Ç­È
-    int i = front -1; //i³]©w³Ì¥ªÃä-1
-    for (int j = front; j < end; j++)  //¶]¨ìpivot¤§«e
+    int pivot = arr[end]; //å°‡æœ€å³é‚Šè¨­ç‚ºåŸºæº–å€¼
+    int i = front -1; //iè¨­å®šæœ€å·¦é‚Š-1
+    for (int j = front; j < end; j++)  //è·‘åˆ°pivotä¹‹å‰
     {
-        if (arr[j] < pivot) { //¦³¤ñ¸û¤pªº´N±N¥¦´«¨ì¥ªÃäªºsubarray
+        if (arr[j] < pivot) { //æœ‰æ¯”è¼ƒå°çš„å°±å°‡å®ƒæ›åˆ°å·¦é‚Šçš„subarray
             i++;
             swap(&arr[i], &arr[j]);
         }
     }
     i++;
-    swap(&arr[i], &arr[end]); //±Npivot´«¨ì¤¤¶¡
-    return i; //±o¨ì¤U¤@­Ó­n¶]ªºpivot­È¡A¨Ã¦^¶Ç
+    swap(&arr[i], &arr[end]); //å°‡pivotæ›åˆ°ä¸­é–“
+    return i; //å¾—åˆ°ä¸‹ä¸€å€‹è¦è·‘çš„pivotå€¼ï¼Œä¸¦å›å‚³
 }
-void Quick_Sort(int *arr, int front, int end) //parameter: ­n±Æ§Çªº°}¦C¥H¤Î°}¦C¤j¤p
+void Quick_Sort(int *arr, int front, int end) //parameter: è¦æ’åºçš„é™£åˆ—ä»¥åŠé™£åˆ—å¤§å°
 {
     //PS:use recursion to complete quick sort
-    if (front < end) //¦³®Äªº°}¦C½d³ò
+    if (front < end) //æœ‰æ•ˆçš„é™£åˆ—ç¯„åœ
     {
-        int pivot = Partition(arr, front, end); //¬ö¿ıfunction±o¨ìªºpivot¦ì¸m
-        Quick_Sort(arr, front, pivot - 1); //leftsub°µquick sort
-        Quick_Sort(arr, pivot + 1, end); //rightsub°µquick sort
+        int pivot = Partition(arr, front, end); //ç´€éŒ„functionå¾—åˆ°çš„pivotä½ç½®
+        Quick_Sort(arr, front, pivot - 1); //leftsubåšquick sort
+        Quick_Sort(arr, pivot + 1, end); //rightsubåšquick sort
     }
 }
 
-int compare(const void *a, const void *b)//¦¹function¬O qsort ©Ò»İªº¤ñ¸û¨ç¦¡(®Ú¾Úqsort©w¸q)
+int compare(const void *a, const void *b)//æ­¤functionæ˜¯ qsort æ‰€éœ€çš„æ¯”è¼ƒå‡½å¼(æ ¹æ“šqsortå®šç¾©)
 {
       int c = *(int *)a;
       int d = *(int *)b;
-      if(c < d) {return -1;}               //¶Ç¦^ -1 ¥Nªí a < b
+      if(c < d) {return -1;}               //å‚³å› -1 ä»£è¡¨ a < b
       else if (c == d) 
-      return 0;                             //¶Ç¦^   0 ¥Nªí a = b
+      return 0;                             //å‚³å›   0 ä»£è¡¨ a = b
       else 
-      return 1;                          //¶Ç¦^  1 ¥Nªí a>b
+      return 1;                          //å‚³å›  1 ä»£è¡¨ a>b
 }
 int main()
 {
-    //part 1: ´ú¸Õºtºâªk¥\¯à¨Ã±Noutput¼g¨ìÀÉ®×¸Ì
+    //part 1: æ¸¬è©¦æ¼”ç®—æ³•åŠŸèƒ½ä¸¦å°‡outputå¯«åˆ°æª”æ¡ˆè£¡
     ifstream in; //input file
     in.open("input.txt");
-    int num; //¬ö¿ıÁ`¦@¦³´X­Ó¼Æ¦r
+    int num; //ç´€éŒ„ç¸½å…±æœ‰å¹¾å€‹æ•¸å­—
     in>>num; //read
     //dynamic allocate
     int *arr =new int [num];
@@ -182,15 +182,15 @@ int main()
     //dynamic allocate need to delete if arr doesn't need anymore
     delete [] arr;
 
-    //part 2: ´ú¸Õ¤j¶q¸ê®Æ¨Ã¬İ¬İ¦UºØ±Æ§Çºtºâªkªº°õ¦æ®É¶¡
-    clock_t start,stop; //ºâ®É¶¡¥Îªº
-    double duration; //­n¦s ®É¶¡®t
+    //part 2: æ¸¬è©¦å¤§é‡è³‡æ–™ä¸¦çœ‹çœ‹å„ç¨®æ’åºæ¼”ç®—æ³•çš„åŸ·è¡Œæ™‚é–“
+    clock_t start,stop; //ç®—æ™‚é–“ç”¨çš„
+    double duration; //è¦å­˜ æ™‚é–“å·®
 
-    //¤U­±¬O«ç»ò±o¥X°õ¦æ®É¶¡ªº¹Lµ{¡A¥Hin1.txt¬°¨Ò
+    //ä¸‹é¢æ˜¯æ€éº¼å¾—å‡ºåŸ·è¡Œæ™‚é–“çš„éç¨‹ï¼Œä»¥in1.txtç‚ºä¾‹
     ifstream in1("in1.txt");
     //in2("in2.txt"),in3("in3.txt"),in4("in4.txt"),in5("in5.txt"),in6("in6.txt"),in7("in7.txt"),in8("in8.txt"),in9("in9.txt"),in10("in10.txt");
     //are using the same method
-    in1>>num; //¬ö¿ıÁ`¦@¦³´X­Ó¼Æ¦r
+    in1>>num; //ç´€éŒ„ç¸½å…±æœ‰å¹¾å€‹æ•¸å­—
     //dynamic allocate
     int *array =new int [num];
     //read number from input file
@@ -204,7 +204,7 @@ int main()
     insertion_sort(array,num);
     stop=(double)clock()/CLOCKS_PER_SEC;
     duration=stop-start;
-    //¨ú¨ì¤p¼ÆÂI²Ä¥|¦ì
+    //å–åˆ°å°æ•¸é»ç¬¬å››ä½
     cout<<"insertion: "<<showpoint<<setprecision(5)<<duration<<endl;
 
     start=clock();
@@ -231,7 +231,7 @@ int main()
     duration=(stop-start)/(double)CLOCKS_PER_SEC;
     cout<<"sort: "<<showpoint<<setprecision(5)<<duration<<endl;
 
-    //¥Î§¹§R°£
+    //ç”¨å®Œåˆªé™¤
     delete [] array;
     return 0;
 }   
