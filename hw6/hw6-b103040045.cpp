@@ -1,11 +1,11 @@
-//Author¡G·¨¶M´@ B103040045
-//Date¡GOct. 12, 2022¡^
-//Purpose¡GÀ³¥Îbinary search tree ¯d¤U¥X²{©_¼Æ¦¸ªº¼Æ¦r
+//Authorï¼š B103040045
+//Dateï¼šOct. 12, 2022ï¼‰
+//Purposeï¼šæ‡‰ç”¨binary search tree ç•™ä¸‹å‡ºç¾å¥‡æ•¸æ¬¡çš„æ•¸å­—
 #include <iostream>
 #include <vector>
 using namespace std;
-int node[100]={0},J=0; //node[100]¬O¤§«á¬ö¿ıtree¸Ìªºnode¡AJ¬Otrace_from_small()ªº¬ö¿ı¥ÎÅÜ¼Æ
-//trenode »İ­n¥ª«ü¼Ğ¡B¥k«ü¼Ğ¡B¸ê®Æ
+int node[100]={0},J=0; //node[100]æ˜¯ä¹‹å¾Œç´€éŒ„treeè£¡çš„nodeï¼ŒJæ˜¯trace_from_small()çš„ç´€éŒ„ç”¨è®Šæ•¸
+//trenode éœ€è¦å·¦æŒ‡æ¨™ã€å³æŒ‡æ¨™ã€è³‡æ–™
 class treenode{
     public:
     int num;
@@ -16,17 +16,17 @@ class treenode{
 };
 class tree{
     public:
-    treenode *root; //treeªº³Ì®Ú¥»·½ÀY «ü¼Ğ
+    treenode *root; //treeçš„æœ€æ ¹æœ¬æºé ­ æŒ‡æ¨™
     
     tree() :root(NULL) {} //default constructor
-    void insert(int nums); //insert data to tree¡Aparameter means the number you want to put in.
-    treenode* search(int nums); //search tree's all data¡Aparameter means the number you want to search.
-    void deletes(int nums); //delete data to tree¡Aparameter means the number you want to delete.
+    void insert(int nums); //insert data to treeï¼Œparameter means the number you want to put in.
+    treenode* search(int nums); //search tree's all dataï¼Œparameter means the number you want to search.
+    void deletes(int nums); //delete data to treeï¼Œparameter means the number you want to delete.
 
     //find the min value in the rightest subtree(find successor)
     //the parmeter means the tree's root you want to start with
     treenode* min_in_rightsub(treenode* r);
-    //the function to record from the smallest node's data to the biggest one in the tree¡Aand store in the array node[100].
+    //the function to record from the smallest node's data to the biggest one in the treeï¼Œand store in the array node[100].
     //and the parmeter means the tree's root you want to start with
     void trace_from_small(treenode* r); 
     
@@ -34,8 +34,8 @@ class tree{
 int main()
 {
     vector<tree> a; //define tree
-    tree temp; //­n©ñ¤Jvectorªº¾ğ
-    a.push_back(temp); //¥Nªívector¦³a[0]¤F
+    tree temp; //è¦æ”¾å…¥vectorçš„æ¨¹
+    a.push_back(temp); //ä»£è¡¨vectoræœ‰a[0]äº†
     int w=0; //to record how many groups
     int num=0; //temp parameter to store the data.
     while(cin>>num) //the condition:ctrl+z will end this loop.
@@ -43,7 +43,7 @@ int main()
         if(num==-1) //-1 means the group's end input
         {
             w++; //1 group has already all input,plus 1 to represent there is at least one group.
-            tree Temp; //­n©ñ¤Jvectorªº¾ğ
+            tree Temp; //è¦æ”¾å…¥vectorçš„æ¨¹
             a.push_back(Temp);
             continue; 
         }
@@ -70,7 +70,7 @@ int main()
         for(int i=0;i<count;i++)
         {
         b=a[j].search(node[i]); //record the node
-        //find left's data¡Aif left==NULL¡Aouput 0
+        //find left's dataï¼Œif left==NULLï¼Œouput 0
         if(b->left==NULL)
         cout<<"0 ";
         else
@@ -82,7 +82,7 @@ int main()
         for(int i=0;i<count;i++)
         {
         b=a[j].search(node[i]); //record the node
-        //find left's data¡Aif left==NULL¡Aouput 0
+        //find left's dataï¼Œif left==NULLï¼Œouput 0
         if(b->right==NULL)
         cout<<"0 ";
         else
@@ -97,28 +97,28 @@ int main()
 }
 void tree::insert(int nums)
 {
-    if(search(nums)!=NULL) //if nums has already exist in tree¡Adelete it and return.
+    if(search(nums)!=NULL) //if nums has already exist in treeï¼Œdelete it and return.
     {
         deletes(nums);
         return;
     }
 
     treenode *news=new treenode(nums); //create a new node that store the nums
-    if(root==NULL) //case 1: root==NULL¡Adirectly insert it
+    if(root==NULL) //case 1: root==NULLï¼Œdirectly insert it
     {
         root=news;
         return;
     }
-    treenode *cur=root,*parent; //cur pointer to trace the tree¡Aparent means the new node's parent node
+    treenode *cur=root,*parent; //cur pointer to trace the treeï¼Œparent means the new node's parent node
     while(cur!=NULL)
     {
         parent=cur;
-        if(news->num > cur->num) //­n©ñªº¤ñ¸û¤j¡A©¹¥k¨«
+        if(news->num > cur->num) //è¦æ”¾çš„æ¯”è¼ƒå¤§ï¼Œå¾€å³èµ°
         cur=cur->right;
-        else if(news->num < cur->num) //­n©ñªº¤ñ¸û¤p¡A©¹¥ª¨«
+        else if(news->num < cur->num) //è¦æ”¾çš„æ¯”è¼ƒå°ï¼Œå¾€å·¦èµ°
         cur=cur->left;
     }
-    //³Ì«á¨M©w­n©ñ­şÃä
+    //æœ€å¾Œæ±ºå®šè¦æ”¾å“ªé‚Š
     if(news->num > parent->num)
     parent->right=news;
     else if(news->num < parent->num)
@@ -127,11 +127,11 @@ void tree::insert(int nums)
 treenode* tree::search(int nums)
 {
     treenode* cur=root;
-    while(cur!=NULL&&cur->num!=nums) //­­¨î:cur!=NULL ¦Ó¥B ÁÙ¨S§ä¨ì¨º­Ónums¤§«e ³£­nÄ~Äò¶]
+    while(cur!=NULL&&cur->num!=nums) //é™åˆ¶:cur!=NULL è€Œä¸” é‚„æ²’æ‰¾åˆ°é‚£å€‹numsä¹‹å‰ éƒ½è¦ç¹¼çºŒè·‘
     {
-        if(nums > cur->num) //­n§äªº¤ñ¸û¤j¡A©¹¥k¨«
+        if(nums > cur->num) //è¦æ‰¾çš„æ¯”è¼ƒå¤§ï¼Œå¾€å³èµ°
         cur=cur->right;
-        else if(nums < cur->num) //­n§äªº¤ñ¸û¤p¡A©¹¥ª¨«
+        else if(nums < cur->num) //è¦æ‰¾çš„æ¯”è¼ƒå°ï¼Œå¾€å·¦èµ°
         cur=cur->left;
     }
     return cur; //return pointer
@@ -139,7 +139,7 @@ treenode* tree::search(int nums)
 treenode* tree::min_in_rightsub(treenode* r) 
 {
     treenode* cur=r;
-    //§ä³Ì¤p¡A©Ò¥HºÉ¶q©¹¥ª§ä
+    //æ‰¾æœ€å°ï¼Œæ‰€ä»¥ç›¡é‡å¾€å·¦æ‰¾
     while(cur!=NULL && cur->left!=NULL)
     {
         cur=cur->left;
@@ -149,17 +149,17 @@ treenode* tree::min_in_rightsub(treenode* r)
 void tree::deletes(int nums)
 {
     treenode* del=search(nums); //record the node address you want to delete
-    if(del==NULL) //§ä¤£¨ì¸Ó­È¡A´£¦­µ²§ô
+    if(del==NULL) //æ‰¾ä¸åˆ°è©²å€¼ï¼Œææ—©çµæŸ
     return;
 
-    if(root==del) //­n§Rªº­È­è¦n¬Oroot«ü¨ìªº¦a¤è¡Aroot»İ­nÅÜ°Ê
+    if(root==del) //è¦åˆªçš„å€¼å‰›å¥½æ˜¯rootæŒ‡åˆ°çš„åœ°æ–¹ï¼Œrootéœ€è¦è®Šå‹•
     {
         if(root->left==NULL&&root->right==NULL) //case 1 : no child
         {
             root=NULL;
             delete del;
         }
-        //case 2 : one child¡A±µ¤@Ãä
+        //case 2 : one childï¼Œæ¥ä¸€é‚Š
         else if(root->left!=NULL&&root->right==NULL) 
         {
             root=root->left;
@@ -173,7 +173,7 @@ void tree::deletes(int nums)
         //case 3:two children
         else
         {
-            //§äsuccessor ¨Ã±N¨âªÌ­È¤¬´«¡A¦A§â­ì¨Ó­n§Rªº§R±¼
+            //æ‰¾successor ä¸¦å°‡å…©è€…å€¼äº’æ›ï¼Œå†æŠŠåŸä¾†è¦åˆªçš„åˆªæ‰
         treenode* temp1=min_in_rightsub(del->right);
         int t1=del->num;
         del->num=temp1->num;
@@ -191,17 +191,17 @@ void tree::deletes(int nums)
         }
         return;
     }
-    treenode *cur=root,*parent; //cur pointer to trace the tree¡Aparent means the new node's parent node
+    treenode *cur=root,*parent; //cur pointer to trace the treeï¼Œparent means the new node's parent node
     while(cur->num!=del->num)
     {
     parent=cur;
-    if(del->num > cur->num) //­n©ñªº¤ñ¸û¤j¡A©¹¥k¨«
+    if(del->num > cur->num) //è¦æ”¾çš„æ¯”è¼ƒå¤§ï¼Œå¾€å³èµ°
     cur=cur->right;
-    else if(del->num < cur->num) //­n©ñªº¤ñ¸û¤p¡A©¹¥ª¨«
+    else if(del->num < cur->num) //è¦æ”¾çš„æ¯”è¼ƒå°ï¼Œå¾€å·¦èµ°
     cur=cur->left;
     }
 
-    if(del->left==NULL&&del->right==NULL) //case 1 no child ª½±µ§R
+    if(del->left==NULL&&del->right==NULL) //case 1 no child ç›´æ¥åˆª
     {
         if(parent->num > del->num)
         parent->left=NULL;
@@ -209,24 +209,24 @@ void tree::deletes(int nums)
         parent->right=NULL;
         delete del;
     }
-    else if(del->left==NULL||del->right==NULL) //case 2 one child ±µ¤@Ãä
+    else if(del->left==NULL||del->right==NULL) //case 2 one child æ¥ä¸€é‚Š
     {
-        //§R±¼parent¥kÃäªº­ìnode¡A¦A±µ¦^delªº¥ªchild
+        //åˆªæ‰parentå³é‚Šçš„åŸnodeï¼Œå†æ¥å›delçš„å·¦child
         if(del->num > parent->num && del->left!=NULL) 
         {
             parent->right=del->left; 
         }
-        //§R±¼parent¥kÃäªº­ìnode¡A¦A±µ¦^delªº¥kchild
+        //åˆªæ‰parentå³é‚Šçš„åŸnodeï¼Œå†æ¥å›delçš„å³child
         else if(del->num > parent->num && del->right!=NULL)
         {
             parent->right=del->right;
         }
-        //§R±¼parent¥ªÃäªº­ìnode¡A¦A±µ¦^delªº¥ªchild
+        //åˆªæ‰parentå·¦é‚Šçš„åŸnodeï¼Œå†æ¥å›delçš„å·¦child
         else if(del->num < parent->num && del->left!=NULL)
         {
             parent->left=del->left;
         }
-        //§R±¼parent¥ªÃäªº­ìnode¡A¦A±µ¦^delªº¥kchild
+        //åˆªæ‰parentå·¦é‚Šçš„åŸnodeï¼Œå†æ¥å›delçš„å³child
         else if(del->num < parent->num && del->right!=NULL)
         {
             parent->left=del->right;
@@ -235,7 +235,7 @@ void tree::deletes(int nums)
     }
     else //case 3 two children
     {
-        //§äsuccessor ¨Ã±N¨âªÌ­È¤¬´«¡A¦A§â­ì¨Ó­n§Rªº§R±¼
+        //æ‰¾successor ä¸¦å°‡å…©è€…å€¼äº’æ›ï¼Œå†æŠŠåŸä¾†è¦åˆªçš„åˆªæ‰
         treenode* temp=min_in_rightsub(del->right);
         int t=del->num;
         del->num=temp->num;
@@ -252,29 +252,29 @@ void tree::deletes(int nums)
         }
     }
 }
-void tree::trace_from_small(treenode* r) //¥Îrecursionªº¤è¦¡§ä¡A©Ò¥H·|¦³ÂI¤p½ÆÂø
+void tree::trace_from_small(treenode* r) //ç”¨recursionçš„æ–¹å¼æ‰¾ï¼Œæ‰€ä»¥æœƒæœ‰é»å°è¤‡é›œ
 {
     treenode* temp; //record pointer
 
-    //¯à©¹¥ª´N©¹¥ª(¥ªÃä¤p)
+    //èƒ½å¾€å·¦å°±å¾€å·¦(å·¦é‚Šå°)
     if(r->left!=NULL)
     trace_from_small(r->left);
-    else //¤£¯à©¹¥ª´N¬ö¿ı
+    else //ä¸èƒ½å¾€å·¦å°±ç´€éŒ„
     {
         node[J]=r->num;
         J++;
 
-        if(r->right!=NULL) //¦pªG­è¦n¥i¥H©¹¥k¡A´N¥ı©¹¥k
+        if(r->right!=NULL) //å¦‚æœå‰›å¥½å¯ä»¥å¾€å³ï¼Œå°±å…ˆå¾€å³
         {
         trace_from_small(r->right);
         }
         return;
     }
 
-    node[J]=r->num; //¬ö¿ıroot
+    node[J]=r->num; //ç´€éŒ„root
     J++;
 
-    if(r->right!=NULL) //©¹right subtree¨«
+    if(r->right!=NULL) //å¾€right subtreeèµ°
     {
         trace_from_small(r->right);
     }
