@@ -170,7 +170,7 @@ LONG filesize(const char* filename)
     return static_cast<LONG>(fileSize);
 }
 
-void compress(const char* filename)
+void compress(const char* filename, const char* outfile)
 {
     cout << "Comperssion start!\n";
     HuffmanNode* a = Huffman_tree(filename);
@@ -186,7 +186,7 @@ void compress(const char* filename)
 
     LONG total = total_table_size(codes);
 
-    FILE* fp = fopen("compressed.txt", "wb");
+    FILE* fp = fopen(outfile, "wb");
     fwrite(&total, sizeof(total),1,fp); //編碼表共需要幾 bytes
     map<unsigned char, string>::iterator it;
     for(it =codes.begin();it != codes.end(); it++)
