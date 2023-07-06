@@ -1,48 +1,48 @@
-//Author¡G·¨¶M´@ B103040045
-//Date¡GSept. 22, 2022
-//Purpose¡G§Q¥Îlinked listªº¤è¦¡°µ¥X¦h¶µ¦¡¥[ªk©M­¼ªk
+//Authorï¼š B103040045
+//Dateï¼šSept. 22, 2022
+//Purposeï¼šåˆ©ç”¨linked listçš„æ–¹å¼åšå‡ºå¤šé …å¼åŠ æ³•å’Œä¹˜æ³•
 #include <iostream>
 using namespace std;
-//linked list¥Hnode³s±µ¡Anode¦³¦s©ñ¸ê®Æ¤Î«ü¦V¦Û¤vªº«ü¼Ğ
+//linked listä»¥nodeé€£æ¥ï¼Œnodeæœ‰å­˜æ”¾è³‡æ–™åŠæŒ‡å‘è‡ªå·±çš„æŒ‡æ¨™
 struct node{
-    int coef,exp; //coef¥Nªí¦h¶µ¦¡«Y¼Æ¡Aexp¥Nªí¦h¶µ¦¸ªº¦¸¤è
-    node* next; //«ü¨ì¤U­Ónodeªº«ü¼Ğ
+    int coef,exp; //coefä»£è¡¨å¤šé …å¼ä¿‚æ•¸ï¼Œexpä»£è¡¨å¤šé …æ¬¡çš„æ¬¡æ–¹
+    node* next; //æŒ‡åˆ°ä¸‹å€‹nodeçš„æŒ‡æ¨™
     node() :coef(0),exp(0) {} //default constructor
-    node(int Coef,int Exp); //constructor with parameter Coef(­n©ñªº«Y¼Æ) and Exp(­n©ñªº¦¸¤è)
+    node(int Coef,int Exp); //constructor with parameter Coef(è¦æ”¾çš„ä¿‚æ•¸) and Exp(è¦æ”¾çš„æ¬¡æ–¹)
 };
-//¹ê²{linked listªºclass
+//å¯¦ç¾linked listçš„class
 class linked_list{
     private:
-    node* head; //¤@­Ónode«ü¼Ğ¥Nªí¸Ólinked listªºÀY(³Ì¤j¦¸¤è)
-    node* tail; //¤@­Ónode«ü¼Ğ¥Nªí¸Ólinked listªº§À¤Ú(³Ì¤p¦¸¤è)
+    node* head; //ä¸€å€‹nodeæŒ‡æ¨™ä»£è¡¨è©²linked listçš„é ­(æœ€å¤§æ¬¡æ–¹)
+    node* tail; //ä¸€å€‹nodeæŒ‡æ¨™ä»£è¡¨è©²linked listçš„å°¾å·´(æœ€å°æ¬¡æ–¹)
     public:
     linked_list() :head(NULL),tail(NULL) {} //default constructor mean NULL linked list(Nothing in the linked list)
-    //insert node to the linked list¡C
+    //insert node to the linked listã€‚
     //parameter means the node we want to insert.
     void insert(node &N); 
     void traveral(); //trace the whole linked list and show the data in the node.
     void Delete(); //delete the node whose coef is zero in the whole linked list. 
     bool isempty(); //verify that this linked list is empty or not.
-    //operator overloading for +¡C
-    //use friend function to pass two parameter¡A¤@­Ó¬O³Q¥[¼Æ¡A¥t¤@­Ó¬O¥[¼Æ¡A¨Ã¦^¶Ç¬Û¥[ªºµ²ªG
+    //operator overloading for +ã€‚
+    //use friend function to pass two parameterï¼Œä¸€å€‹æ˜¯è¢«åŠ æ•¸ï¼Œå¦ä¸€å€‹æ˜¯åŠ æ•¸ï¼Œä¸¦å›å‚³ç›¸åŠ çš„çµæœ
     friend linked_list operator +(linked_list &a,linked_list &b); 
-    //operator overloading for *¡C
-    //use friend function to pass two parameter¡A¤@­Ó¬O³Q­¼¼Æ¡A¥t¤@­Ó¬O­¼¼Æ¡A¨Ã¦^¶Ç¬Û­¼ªºµ²ªG
+    //operator overloading for *ã€‚
+    //use friend function to pass two parameterï¼Œä¸€å€‹æ˜¯è¢«ä¹˜æ•¸ï¼Œå¦ä¸€å€‹æ˜¯ä¹˜æ•¸ï¼Œä¸¦å›å‚³ç›¸ä¹˜çš„çµæœ
     friend linked_list operator *(linked_list &a,linked_list &b);
 };
 int main()
 {
-    linked_list A[50],B[50]; //«Ø¥ß¦h²Õlinked list(¿é¤J¥i¦³¦h²Õ)
-    node temp; //¼È¦s¥ÎªºÅÜ¼Æ
+    linked_list A[50],B[50]; //å»ºç«‹å¤šçµ„linked list(è¼¸å…¥å¯æœ‰å¤šçµ„)
+    node temp; //æš«å­˜ç”¨çš„è®Šæ•¸
     //P and Q means the following input for coef and exp until input P time or Q time;
-    //coef means «Y¼Æ¡Aexp means ¦¸¤è
-    //count ¬O¬°¤Fºâ¦³´X²Õ¿é¤J
+    //coef means ä¿‚æ•¸ï¼Œexp means æ¬¡æ–¹
+    //count æ˜¯ç‚ºäº†ç®—æœ‰å¹¾çµ„è¼¸å…¥
     int P,Q,coef,exp,count=0; 
 
     do
     {
-    cin>>P; //P­Óinput
-    for(int i=0;i<P;i++) //¶]P¦¸
+    cin>>P; //På€‹input
+    for(int i=0;i<P;i++) //è·‘Pæ¬¡
         {
         cin>>coef>>exp; //input coef and exp
         //store in temp
@@ -51,7 +51,7 @@ int main()
         //insert the node to A linked list
         A[count].insert(temp);
         }
-    cin>>Q; //¶]Q¦¸
+    cin>>Q; //è·‘Qæ¬¡
     for(int i=0;i<Q;i++)
         {
         cin>>coef>>exp; //input coef and exp
@@ -61,17 +61,17 @@ int main()
         //insert the node to B linked list
         B[count].insert(temp);
         }
-        count++; //¥Nªí­è­è¥H¿é§¹¤@²Õ ­n¥[¤@
+        count++; //ä»£è¡¨å‰›å‰›ä»¥è¼¸å®Œä¸€çµ„ è¦åŠ ä¸€
     }
     while(!(P==0 && Q==0)); //P=0&&Q=0 end
 
     cout<<endl;
 
-    count--; //end input (0,0) ·|¦hºâ¤@¦¸ ­n¦©±¼
-    //«Ø¥ß°ÊºA°}¦C (¦³´X²Õinput´N«Ø´X²Õ)
+    count--; //end input (0,0) æœƒå¤šç®—ä¸€æ¬¡ è¦æ‰£æ‰
+    //å»ºç«‹å‹•æ…‹é™£åˆ— (æœ‰å¹¾çµ„inputå°±å»ºå¹¾çµ„)
     linked_list *C=new linked_list [count]; //store the value of A+B
     linked_list *D=new linked_list [count]; //store the value of A*B
-    //calculate the addition and multiplication and store in the dynamic array¡Arun (count) time
+    //calculate the addition and multiplication and store in the dynamic arrayï¼Œrun (count) time
     //PS: there is in total (count) number inputs
     for(int j=0;j<count;j++)
     {
@@ -87,15 +87,15 @@ int main()
         cout<<"Case"<<k+1<<":"<<endl;
 
         cout<<"ADD\n";
-        if(!(C[k].isempty())) //at least one element in linked list¡Adisplay it
+        if(!(C[k].isempty())) //at least one element in linked listï¼Œdisplay it
         C[k].traveral();
-        else //by addition¡Athe calculation is zero¡Aand this time linked list is empty¡Ashow 0 0 by question request
+        else //by additionï¼Œthe calculation is zeroï¼Œand this time linked list is emptyï¼Œshow 0 0 by question request
         cout<<"0 0"<<endl;
 
         cout<<"MULTIPLY\n";
-        if(!(D[k].isempty())) //at least one element in linked list¡Adisplay it
+        if(!(D[k].isempty())) //at least one element in linked listï¼Œdisplay it
         D[k].traveral();
-        else //by multiplication¡Athe calculation is zero¡Aand this time linked list is empty¡Ashow 0 0 by question request
+        else //by multiplicationï¼Œthe calculation is zeroï¼Œand this time linked list is emptyï¼Œshow 0 0 by question request
         cout<<"0 0"<<endl;
     }
     //end program need to delete the dynamic array
@@ -103,77 +103,77 @@ int main()
     delete [] D;
     return 0;
 }
-node::node(int Coef,int Exp) :coef(Coef),exp(Exp) //«Ø¥ß¤@­Ó¦³¯S©w­Èªºnode
+node::node(int Coef,int Exp) :coef(Coef),exp(Exp) //å»ºç«‹ä¸€å€‹æœ‰ç‰¹å®šå€¼çš„node
 {
     next=NULL;
 }
 void linked_list::insert(node &N) 
 {
-    node* news=new node(N.coef,N.exp); //¤@­Ónode«ü¼Ğ«ü¦V·s«Ø¥ßªºnode
-    if(head==NULL) //linked listÁÙ¥¼¦³¥ô¦ó¤¸¯Àªº®É­Ô
+    node* news=new node(N.coef,N.exp); //ä¸€å€‹nodeæŒ‡æ¨™æŒ‡å‘æ–°å»ºç«‹çš„node
+    if(head==NULL) //linked listé‚„æœªæœ‰ä»»ä½•å…ƒç´ çš„æ™‚å€™
     {
-        head=tail=news; //ª½±µ¬£¹L¥h
-        return; //´£¦­µ²§ô
+        head=tail=news; //ç›´æ¥æ´¾éå»
+        return; //ææ—©çµæŸ
     }
-    if(head==tail) //¥u¦³¤@­Ónodeªº®É­Ô
+    if(head==tail) //åªæœ‰ä¸€å€‹nodeçš„æ™‚å€™
     {
-        if(head->exp > news->exp) //­ì¥»¨º­Ó¤¸¯Àªº¦¸¤è¬O³Ì¤jªº ©¹«á±µ
+        if(head->exp > news->exp) //åŸæœ¬é‚£å€‹å…ƒç´ çš„æ¬¡æ–¹æ˜¯æœ€å¤§çš„ å¾€å¾Œæ¥
         {
-            //§À¤Ú§ïÅÜ
+            //å°¾å·´æ”¹è®Š
             head->next=news;
             tail=news; 
             tail->next=NULL;
         }
-        else if(head->exp < news->exp) //­ì¥»¨º­Ó¤¸¯Àªº¦¸¤è³Ì¤p ©¹«e±µ
+        else if(head->exp < news->exp) //åŸæœ¬é‚£å€‹å…ƒç´ çš„æ¬¡æ–¹æœ€å° å¾€å‰æ¥
         {
-            //ÀY§ïÅÜ
+            //é ­æ”¹è®Š
             news->next=head;
             head->next=NULL; 
             head=news;
         }
-        else //¤@¼Ëªº¦¸¤è «Y¼Æ¬Û¥[
+        else //ä¸€æ¨£çš„æ¬¡æ–¹ ä¿‚æ•¸ç›¸åŠ 
         {
             head->coef+=news->coef;
         }
-        return; //´£¦­µ²§ô
+        return; //ææ—©çµæŸ
     }
-    //¥H¤U¬°¦h­Ó¤¸¯Àªº®É­Ô
-    if(head->exp<news->exp) //¤ñÀY¤j
+    //ä»¥ä¸‹ç‚ºå¤šå€‹å…ƒç´ çš„æ™‚å€™
+    if(head->exp<news->exp) //æ¯”é ­å¤§
     {
-        //§ïÅÜÀY
+        //æ”¹è®Šé ­
         news->next=head;
         head=news;
         return;
     }
-    if(tail->exp>news->exp) //¤ñ§À¤Ú¤p
+    if(tail->exp>news->exp) //æ¯”å°¾å·´å°
     {
-        //§ïÅÜ§À¤Ú
+        //æ”¹è®Šå°¾å·´
         tail->next=news;
         tail=news;
         return;
     }
-    node* temp=head; //«Ø¥ß¤@­Ónode«ü¼Ğ«ü¦VÀY¡A¨Ã§ä¥X¤p©ó­n´¡ªºnodeªº¦¸¤èªº ¥B¦blinked list®t­È³Ì¤pªºnode
-    while(temp!=NULL) //trace the linked list until all nodes have traced¡CIn the end¡Atemp=NULL
+    node* temp=head; //å»ºç«‹ä¸€å€‹nodeæŒ‡æ¨™æŒ‡å‘é ­ï¼Œä¸¦æ‰¾å‡ºå°æ–¼è¦æ’çš„nodeçš„æ¬¡æ–¹çš„ ä¸”åœ¨linked listå·®å€¼æœ€å°çš„node
+    while(temp!=NULL) //trace the linked list until all nodes have tracedã€‚In the endï¼Œtemp=NULL
     {
         if(temp->exp==news->exp) //the same exp
         {
-            temp->coef+=news->coef; //«Y¼Æ¬Û¥[
-            return; //¥i´£¦­µ²§ô
+            temp->coef+=news->coef; //ä¿‚æ•¸ç›¸åŠ 
+            return; //å¯ææ—©çµæŸ
         }
-        if(temp->exp > news->exp && temp->next->exp < news->exp) //§¨¦b­n©ñªº¦ì¸m (linked list¦³¤@ºØ¤j¤p¶¶§Ç)
+        if(temp->exp > news->exp && temp->next->exp < news->exp) //å¤¾åœ¨è¦æ”¾çš„ä½ç½® (linked listæœ‰ä¸€ç¨®å¤§å°é †åº)
         break;
         else
         temp=temp->next;
     }
-    //°Ê«ü¼Ğ§¨¶i¥h
+    //å‹•æŒ‡æ¨™å¤¾é€²å»
     news->next=temp->next;
     temp->next=news;
     return;
 }
 void linked_list::traveral() //trace linked list
 {
-    node* cur=head; //«ü¼Ğcur«ü¨ìhead
-    while(cur!=NULL) //¤@ª½¨«¨ì³Ì«á
+    node* cur=head; //æŒ‡æ¨™curæŒ‡åˆ°head
+    while(cur!=NULL) //ä¸€ç›´èµ°åˆ°æœ€å¾Œ
     {
         cout<<cur->coef<<" "<<cur->exp<<endl; //output coef and exp
         cur=cur->next; //move to next node
@@ -188,34 +188,34 @@ bool linked_list::isempty()
 }
 void linked_list::Delete()
 {
-    node* temp; //«ü¨ì­n§Rªºnodeªº¼È¦sÅÜ¼Æ
-    while(head!=NULL && head->coef==0) //±qÀY¶}©l§R¦³¹s«Y¼Æªºnode¡A¨Ã§ïÅÜheadªº«ü¦V¡Ahead«ü¨ì¹s«Y¼Ænode¤~§R
+    node* temp; //æŒ‡åˆ°è¦åˆªçš„nodeçš„æš«å­˜è®Šæ•¸
+    while(head!=NULL && head->coef==0) //å¾é ­é–‹å§‹åˆªæœ‰é›¶ä¿‚æ•¸çš„nodeï¼Œä¸¦æ”¹è®Šheadçš„æŒ‡å‘ï¼ŒheadæŒ‡åˆ°é›¶ä¿‚æ•¸nodeæ‰åˆª
     {
-        //§ïÅÜÀY
+        //æ”¹è®Šé ­
         temp=head;
         head=temp->next;
         delete temp;
     }
-    if(head==NULL) //¥Nªí§R§¹ => nothing in the linked list
+    if(head==NULL) //ä»£è¡¨åˆªå®Œ => nothing in the linked list
     {
         tail=NULL;
         return;
     }
-    node* before=head; //§ä¨ìtailªº«e¤@­Ónode¦ì¸m¨Ã¦s¤U¨Ó
-    while(tail->coef==0) //tail«ü¨ì¹s«Y¼Ænode¤~§R
+    node* before=head; //æ‰¾åˆ°tailçš„å‰ä¸€å€‹nodeä½ç½®ä¸¦å­˜ä¸‹ä¾†
+    while(tail->coef==0) //tailæŒ‡åˆ°é›¶ä¿‚æ•¸nodeæ‰åˆª
     {
         temp=tail;
-        while(before->next!=tail) //§ätailªº«e¤@­Ó¦ì¸m
+        while(before->next!=tail) //æ‰¾tailçš„å‰ä¸€å€‹ä½ç½®
         {
             before=before->next;
         }
-        //§ïÅÜ§À¤Ú
+        //æ”¹è®Šå°¾å·´
         tail=before;
         tail->next=NULL;
         delete temp;
     }
-    node* cur=head; //¦s­n§Rªº¤¸¯Àªº«e¤@­Ó¦ì¸m
-    while(cur->next!=NULL) //§ä­n§Rªº¤¸¯Àªº«e¤@­Ó¦ì¸m
+    node* cur=head; //å­˜è¦åˆªçš„å…ƒç´ çš„å‰ä¸€å€‹ä½ç½®
+    while(cur->next!=NULL) //æ‰¾è¦åˆªçš„å…ƒç´ çš„å‰ä¸€å€‹ä½ç½®
     {
         if(cur->next->coef==0)
         {
@@ -229,14 +229,14 @@ void linked_list::Delete()
 linked_list operator +(linked_list &a,linked_list &b)
 {
     linked_list c; //a new linked list to stroe a+b
-    //a ¥ş³¡©ñ¤J c ªºlinked list ¤¤
+    //a å…¨éƒ¨æ”¾å…¥ c çš„linked list ä¸­
     node* temp=a.head;
     while(temp!=NULL)
     {
         c.insert(*temp);
         temp=temp->next;
     }
-    //b ¥ş³¡©ñ¤J c ªºlinked list ¤¤
+    //b å…¨éƒ¨æ”¾å…¥ c çš„linked list ä¸­
     temp=b.head;
     while(temp!=NULL)
     {
@@ -252,17 +252,17 @@ linked_list operator *(linked_list &a,linked_list &b)
     int temp_coff,temp_exp; //store the current node's coef and exp
     node* cur_A=a.head; //A node pointer to trace a linked list
     node* cur_B=b.head; //A node pointer to trace b linked list
-    //¥ÎÂù­«°j°é¼ÒÀÀ¦h¶µ¦¡­¼ªk
+    //ç”¨é›™é‡è¿´åœˆæ¨¡æ“¬å¤šé …å¼ä¹˜æ³•
     while(cur_A!=NULL)
     {
       while(cur_B!=NULL)
         {
             //multiplication:
-            //«Y¼Æ¬Û­¼¡A¦¸¤è¬Û¥[
+            //ä¿‚æ•¸ç›¸ä¹˜ï¼Œæ¬¡æ–¹ç›¸åŠ 
         temp_coff=cur_A->coef*cur_B->coef; 
         temp_exp=cur_A->exp+cur_B->exp;
-        node *temp=new node(temp_coff,temp_exp); //«Ø¥ß·snode ¦s­è­èºâ¦nªº­È
-        c.insert(*temp); //©ñ¤Jlinked list
+        node *temp=new node(temp_coff,temp_exp); //å»ºç«‹æ–°node å­˜å‰›å‰›ç®—å¥½çš„å€¼
+        c.insert(*temp); //æ”¾å…¥linked list
         cur_B=cur_B->next;
         } 
         cur_A=cur_A->next;
