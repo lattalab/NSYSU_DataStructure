@@ -1,4 +1,4 @@
-//Author: 楊貽婷 B103040045
+//Author: B103040045
 //Date: sept. 6, 2022
 //Purpose: N階魔方陣的實現(N為奇數)
 #include <iostream>
