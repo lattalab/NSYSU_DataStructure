@@ -1,4 +1,5 @@
-# data_structure
+# NSYSU_data_structure
+2022 - fall semester
 
 course website:  
 https://par.cse.nsysu.edu.tw/~cbyang/course/ds/ds_index.htm  
